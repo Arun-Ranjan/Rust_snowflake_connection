@@ -1,1 +1,1 @@
-Connecting to snowflake for creating and querying into the database.
+# Connecting to snowflake for creating and querying into the database.
