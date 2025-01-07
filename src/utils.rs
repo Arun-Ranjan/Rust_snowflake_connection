@@ -5,24 +5,7 @@ use std::io;
 // https://wy19158.central-india.azure.snowflakecomputing.com
 
 
-// Functions
-pub async  fn authenticate_user(username: &str, password: &str) -> Result<SnowflakeClient, Box<dyn std::error::Error>> {
-    let config = SnowflakeClientConfig {
-        account: "wy19158.central-india.azure".to_string(),
-        role: Some("ACCOUNTADMIN".to_string()),
-        warehouse: Some("COMPUTE_WH".to_string()),
-        database: Some("TRAININGDB".to_string()),
-        schema: Some("SALES".to_string()),
-        timeout: Some(std::time::Duration::from_secs(30)),
-    };
 
-    let auth_method = SnowflakeAuthMethod::Password(password.to_string());
-
-    // Create and return a SnowflakeClient
-    let client = SnowflakeClient::new(username, auth_method, config)?;
-    
-    Ok(client)
-}
 
 pub async fn upload_csv_to_snowflake(session: &SnowflakeSession) -> Result<(), Box<dyn std::error::Error>> {
 
