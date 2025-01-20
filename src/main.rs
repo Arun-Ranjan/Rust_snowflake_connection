@@ -11,7 +11,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
 
     let user = args[1].clone();
     let password = args[2].clone();
-    let account = "wy19158.central-india.azure".to_string();
+    let account = "xt48043.central-india.azure".to_string();
     let role = Some("ACCOUNTADMIN".to_string());
     let warehouse = Some("COMPUTE_WH".to_string());
     let database = Some("TRAININGDB".to_string());
@@ -40,7 +40,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
 
         }
         "query" => {
-            println!("Querying the database.");
+            // println!("Querying the database.");
             utils::execute_req_query(&session).await?;
         }
         _ => {

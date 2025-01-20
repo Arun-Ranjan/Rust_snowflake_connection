@@ -46,17 +46,17 @@ pub async fn upload_csv_to_snowflake(session: &SnowflakeSession) -> Result<(), B
     Ok(())
 }
 
-
-
-
-
 pub async fn execute_req_query(session: &SnowflakeSession) -> Result<(), Box<dyn std::error::Error>> {
     
     let mut query = String::new();
     io::stdin().read_line(&mut query)?;
     
     // Execute the query
-    session.execute(query.trim()).await?;
+    let results = session.execute(query.trim()).await?;
+    let rows = results.fetch_all().await?;
+    for row in rows{
+        println!("{:?}",row);
+    }
     println!("Query executed successfully.");
     Ok(())
 }
